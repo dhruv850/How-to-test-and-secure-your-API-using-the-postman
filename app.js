@@ -10,14 +10,15 @@ require('dotenv').config();
 
 //import routes 
 const authRoutes = require('./routes/auth');
-
+const userRoutes = require('./routes/user');
 //app
 const app = express();
 
 //Db
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useCreateIndex:true
+    useCreateIndex:true,
+    useUnifiedTopology: true
 }).then(()=>console.log('DB is connected'));
 
 //middleware 
@@ -29,7 +30,7 @@ app.use(cors());
 
 //routes middleware
 app.use('/api',authRoutes);
-
+app.use('/api',userRoutes);
 //routes
 
 const port = process.env.PORT || 8000

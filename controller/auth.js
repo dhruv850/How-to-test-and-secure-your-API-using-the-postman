@@ -3,6 +3,8 @@ const User = require('../models/user');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const jwt = require ('jsonwebtoken');
 const expressJwt = require('express-jwt');
+
+
 exports.signup = (req,res) => {
     console.log("req.body",req.body);
     const user = new User(req.body);
